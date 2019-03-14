@@ -13,9 +13,10 @@ order += "cpu_temperature 0"
 order += "disk /"
 order += "disk /home"
 order += "ethernet enp1s0"
-order += "wireless wlp2s0"
+order += "wireless wlp4s0"
 order += "volume master"
 order += "battery 1"
+order += "battery 0"
 order += "tztime local"
 
 load {
@@ -40,7 +41,7 @@ ethernet enp1s0 {
         format_down = "<span background='#88c0d0'>  Disconnected </span>"
 }
 
-wireless wlp2s0 {
+wireless wlp4s0 {
         format_up = "<span background='#b48ead'>  %essid </span>"
         format_down = "<span background='#b48ead'>  Disconnected </span>"
 }
@@ -54,14 +55,25 @@ volume master {
 }
 
 battery 1 {
-        format = "<span background='#a3be8c'>  %status %percentage </span>"
+        format = "<span background='#a3be8c'>  %percentage </span>"
         format_down = "No Battery"
         status_chr = "Charging"
         status_bat = "Battery"
         status_unk = "Unknown"
         status_full = "Charged"
         path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
+        low_threshold = 30
+}
+
+battery 0 {
+        format = "<span background='#C199C1'>  %percentage </span>"
+        format_down = "No Battery"
+        status_chr = "Charging"
+        status_bat = "Battery"
+        status_unk = "Unknown"
+        status_full = "Charged"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 30
 }
 
 tztime local {
