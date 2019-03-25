@@ -3,7 +3,7 @@ set $super Mod4
 set $alt Mod1
 
 # set font
-font pango: Noto Sans 8
+font pango: Noto Sans 10
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -37,12 +37,16 @@ bindsym XF86AudioMute exec amixer set Master toggle
 bindsym $super+Shift+z exec --no-startup-id sudo /home/ej/Scripts/change_brightness.sh -200 
 bindsym $super+Shift+x exec --no-startup-id sudo /home/ej/Scripts/change_brightness.sh +200 
 
+# monitors
+bindsym $super+Ctrl+m exec --no-startup-id /home/ej/Scripts/monitor.sh
+bindsym $super+Ctrl+n exec --no-startup-id /home/ej/Scripts/no_monitor.sh
 
 # music control
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec mpc stop
+bindsym $super+Ctrl+a exec --no-startup-id pulseaudio -k # reset pulseaudio to autodetect correct audio output
 
 # kill focused window
 bindsym $super+c kill
